@@ -13,7 +13,9 @@ document.querySelector("form").addEventListener("submit", function (event) {
 function displayWeatherData(response) {
   let temperature = Math.round(response.data.temperature.current);
   let city = response.data.city;
-  let description = response.data.condition.description;
+  let description = response.data.condition.description
+    .toLowerCase()
+    .replace(/^\w/, (c) => c.toUpperCase()); // Convert to sentence case
   let humidity = response.data.temperature.humidity;
   let wind = response.data.wind.speed;
   const timestamp = response.data.time;
